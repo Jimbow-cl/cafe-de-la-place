@@ -1,0 +1,23 @@
+body {
+  background-image: url(./R.jpg);
+  background-repeat: no-repeat;
+  height: auto;
+  width: auto;
+}
+.titre {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+  color: blanchedalmond;
+  text-decoration: underline;
+}
+
+#produits {
+  height: 45px;
+  width: 20vw;
+  border-radius: 45%;
+  font-size: large;
+  justify-content: center;
+  text-align: center;
+}
