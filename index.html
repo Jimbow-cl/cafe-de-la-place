@@ -26,10 +26,41 @@
     <div class="gestion none">
       <h2>Gestion des Stocks</h2>
       <p> Veuillez saisir les nouvelles données</p>
+      <div id="gestion">
+        <form>
+          <label for="nom">Nom du Produit</label>
+          <input type="text" id="nom" placeholder="" />
+          <label for="quantite">Qté</label>
+          <input type="number" id="quantite" placeholder="" min="0" />
+          <label for="prixachat">Prix d'Achat HT</label>
+          <input type="text" id="priachat" placeholder="€ HT" />
+          <label for="prixvente">Prix de Vente HT</label>
+          <input type="text" id="prixvente" placeholder="€ HT" />
+          <label for="tva5">TVA 5%</label>
+          <input type="radio" id="tva5" placeholder="TVA" value="tva5" />
+          <label for="tva5">TVA 10%</label>
+          <input type="radio" id="tva10" placeholder="TVA" value="tva10" />
+          <label for="tva5">TVA 20%</label>
+          <input type="radio" id="tva20" placeholder="TVA" value="tva20" />
+          <label for="margeht">Marge Hors Taxe</label>
+          <input type="text" id="margeht" placeholder="Marge HT" disabled />
+          <label for="prixttc">Prix TTC</label>
+          <input type="text" id="prixttc" placeholder="Prix TTC" disabled />
+          <label for="produit">Type de Produit</label>
+          <select id="produit">
+            <option value="none">--Selectionnez votre type--</option>
+            <option value="ba">Boisson alcoolisée</option>
+            <option value="bna">Boisson non alcoolisée</option>
+            <option value="other">Autre</option>
+          </select>
+          <button type="submit">Rafraichir</button>
+        </form>
+      </div>
     </div>
     <div class="consultation none">
       <h2>Consultation des Stocks</h2>
       <p> Voici le tableau comprennant vos stocks</p>
+      <div id="consultation"></div>
     </div>
 
 

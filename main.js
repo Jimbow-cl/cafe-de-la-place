@@ -7,7 +7,7 @@ let gestion = document.querySelector(".consultation")
 let retour = document.getElementById("retour")
 
 
-
+// Bouton Menu Gestion Stock
 btnStock.addEventListener("click", function () {
     bienvenue.style.display = "none";
     stock.style.display = "flex";
@@ -16,7 +16,7 @@ btnStock.addEventListener("click", function () {
 
 
 })
-
+//Bouton Menu Consultation Stock
 btnConsult.addEventListener("click", function () {
     bienvenue.style.display = "none";
     stock.style.display = "none";
@@ -25,7 +25,7 @@ btnConsult.addEventListener("click", function () {
 
 
 })
-
+//Bouton Retour
 btnRetour.addEventListener("click", function () {
     bienvenue.style.display = "flex";
     stock.style.display = "none";
