@@ -21,7 +21,10 @@
       <p> Veuillez selectionner votre choix.
         Gestion de votre stock ou Consultation</p>
       <button class="button1" id="btnstock">Gestion</button>
+      <div class="gap"></div>
       <button class="button1" id="btnconsultation">Consultation</button>
+      <div class="gap"></div>
+      <input type="password" id="passwd" placeholder="Mot de Passe Gestionnaire" />
     </div>
     <div class="gestion none">
       <h2>Gestion des Stocks</h2>
@@ -36,12 +39,12 @@
           <input type="text" id="priachat" placeholder="€ HT" />
           <label for="prixvente">Prix de Vente HT</label>
           <input type="text" id="prixvente" placeholder="€ HT" />
-          <label for="tva5">TVA 5%</label>
-          <input type="radio" id="tva5" placeholder="TVA" value="tva5" />
-          <label for="tva5">TVA 10%</label>
-          <input type="radio" id="tva10" placeholder="TVA" value="tva10" />
-          <label for="tva5">TVA 20%</label>
-          <input type="radio" id="tva20" placeholder="TVA" value="tva20" />
+          <select id="tva">
+            <option value="none">TVA?-</option>
+            <option value="tva5">5%</option>
+            <option value="tva10">10%</option>
+            <option value="tva20">20%</option>
+          </select>
           <label for="margeht">Marge Hors Taxe</label>
           <input type="text" id="margeht" placeholder="Marge HT" disabled />
           <label for="prixttc">Prix TTC</label>
@@ -53,7 +56,7 @@
             <option value="bna">Boisson non alcoolisée</option>
             <option value="other">Autre</option>
           </select>
-          <button type="submit">Rafraichir</button>
+          <button type="submit" id="submit">Rafraichir</button>
         </form>
       </div>
     </div>
