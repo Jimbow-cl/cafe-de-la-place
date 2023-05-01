@@ -50,6 +50,8 @@ body {
 .gestion {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .consultation {
@@ -114,6 +116,8 @@ body {
 }
 
 form {
+  padding-bottom: 35px;
+  border-bottom: 2px solid blanchedalmond;
   width: 96%;
   gap: 35px;
   display: flex;
