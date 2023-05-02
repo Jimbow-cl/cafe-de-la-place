@@ -7,8 +7,9 @@ let gestion = document.querySelector(".consultation");
 let retour = document.getElementById("retour");
 let submit = document.getElementById("submit");
 let list = document.querySelector(".list");
+let form = document.querySelector(".form");
 
-liste = [];
+let liste;
 
 // Bouton Menu Gestion Stock avec Mot de Passe : 0000
 btnStock.addEventListener("click", function () {
@@ -53,6 +54,7 @@ btnRetour.addEventListener("click", function () {
 // Appui sur le bouton Submit avec EPreventDefault
 submit.addEventListener("click", function (e) {
     e.preventDefault();
+    refresh();
 
 });
 
@@ -60,7 +62,7 @@ function render() {
 
     let consult = "";
     array.forEach(element => {
-        consult = consult + `<p> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixventettc}  </p>`;
+        consult = consult + `<p> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixttc}  </p>`;
 
         consultation.innerHTML = consult;
 
@@ -79,26 +81,28 @@ function render() {
 //Envoi du Formulaire 
 function refresh() {
 
-    let data = new FormData(stock);
+    let data = new FormData(form);
 
-    let info = new Information(data.get("nom"), data.get("quantite"), data.get("prixachat"), data.get("prixvente"), data.get("tva"), data.get("marheht"), data.get("prixventettc"),)
+    let info = new Information(data.get("nom"), data.get("quantite"), data.get("prixachat"), data.get("prixvente"), data.get("tva"), data.get("marheht"), data.get("prixttc"), data.get("produit"));
 
-
-    render
+    liste.push(info);
+    console.log(info);
+    
 
 }
 
 
 // Function constructeur
 
-function Information(nom, quantite, prixachat, prixvente, tva, margeht, prixvente) {
+function Information(nom, quantite, prixachat, prixvente, tva, margeht, prixttc, produit) {
     this.nom = nom;
     this.quantite = quantite;
     this.prixachat = prixachat;
     this.prixvente = prixvente;
     this.tva = tva;
     this.marght = margeht;
-    this.prixventettc = prixvente;
+    this.prixttc = prixttc;
+    this.produit = produit;
 
 
 
