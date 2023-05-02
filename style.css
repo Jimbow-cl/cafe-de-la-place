@@ -28,6 +28,28 @@ body {
   box-sizing: border-box;
   color: blanchedalmond;
   font-size: 16px;
+<<<<<<< HEAD
+=======
+  width: 53%;
+}
+
+#submit {
+  margin-left: 10px;
+  background-image: url(./coche.png);
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+}
+
+input {
+  border-radius: 5px;
+  height: 27px;
+  background-color: rgb(48, 29, 29);
+  color: antiquewhite;
+>>>>>>> fee870b (png)
 }
 
 .container {
