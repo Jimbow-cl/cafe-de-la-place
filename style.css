@@ -6,12 +6,15 @@ body {
 }
 
 .titre {
-  backdrop-filter: contrast(0.3);
+  font-family: "MonteCarlo", sans-serif;
   display: flex;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 0px;
+  -webkit-text-stroke: 0.2px rgb(199, 173, 109);
+  text-shadow: 1px 5px 10px #f9ecd9;
   justify-items: center;
   justify-content: center;
-  font-size: 23px;
-  text-align: center;
   color: blanchedalmond;
   margin-bottom: 30px;
 }
@@ -31,6 +34,8 @@ body {
   backdrop-filter: contrast(0.2);
   display: flex;
   flex-direction: column;
+  border-radius: 40px;
+  border-style: double;
   padding-top: 20px;
   justify-content: flex-start;
   font-size: 33px;
