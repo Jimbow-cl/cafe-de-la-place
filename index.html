@@ -35,20 +35,20 @@
       <h2>Gestion des Stocks</h2>
       <p> Veuillez saisir les nouvelles données</p>
       <div class="gestion">
-        <form id="stock">
-          <input type="text" id="nom" placeholder="Nom du Produit" />
-          <input type="number" id="quantite" placeholder="Qté" min="0" />
-          <input type="text" id="priachat" placeholder="Prix d'Achat HT" />
-          <input type="text" id="prixvente" placeholder="Prix de Vente HT" />
-          <select id="tva">
+        <form class="form">
+          <input type="text" id="nom" name="nom" placeholder="Nom du Produit" />
+          <input type="number" id="quantite" name="quantite"placeholder="Qté" min="0" />
+          <input type="text" id="priachat" name="prixachat"placeholder="Prix d'Achat HT" />
+          <input type="text" id="prixvente"name="prixvente" placeholder="Prix de Vente HT" />
+          <select id="tva" name="tva">
             <option value="none">TVA?-</option>
             <option value="tva5">5%</option>
             <option value="tva10">10%</option>
             <option value="tva20">20%</option>
           </select>
-          <input type="text" id="margeht" placeholder="Marge HT" disabled />
-          <input type="text" id="prixttc" placeholder="Prix TTC" disabled />
-          <select id="produit">
+          <input type="text" id="margeht" name="margeht"placeholder="Marge HT" disabled />
+          <input type="text" id="prixttc" name="prixttc" placeholder="Prix TTC" disabled />
+          <select id="produit" name="produit">
             <option value="none">--Selectionnez votre type--</option>
             <option value="ba">Boisson alcoolisée</option>
             <option value="bna">Boisson non alcoolisée</option>
