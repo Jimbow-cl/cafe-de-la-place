@@ -47,6 +47,7 @@ input {
   border-radius: 5px;
   height: 27px;
   background-color: rgb(48, 29, 29);
+  color: antiquewhite;
 }
 
 .container {
@@ -169,6 +170,7 @@ form {
 .retour {
   width: 80px;
   height: 80px;
+  background-image: url(./retour.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
