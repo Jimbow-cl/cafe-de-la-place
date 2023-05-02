@@ -6,8 +6,9 @@ let stock = document.querySelector(".gestion");
 let gestion = document.querySelector(".consultation");
 let retour = document.getElementById("retour");
 let submit = document.getElementById("submit");
+let list = document.querySelector(".list");
 
-let liste = [];
+liste = [];
 
 // Bouton Menu Gestion Stock avec Mot de Passe : 0000
 btnStock.addEventListener("click", function () {
@@ -57,13 +58,13 @@ submit.addEventListener("click", function (e) {
 
 function render() {
 
-    let consult ="";
+    let consult = "";
     array.forEach(element => {
         consult = consult + `<p> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixventettc}  </p>`;
-        
+
         consultation.innerHTML = consult;
 
-        btnStock.forEach((element, index)=> {
+        btnStock.forEach((element, index) => {
 
             element.addEventListener("click", () => {
                 consult.splice(index, 1);
@@ -72,15 +73,15 @@ function render() {
         })
 
     });
-    
+
 }
 
 //Envoi du Formulaire 
 function refresh() {
-    
-    let data = new FormData (stock);
 
-    let info = new Information (data.get("nom"),data.get("quantite"),data.get("prixachat"),data.get("prixvente"),data.get("tva"),data.get("marheht"),data.get("prixventettc"), )
+    let data = new FormData(stock);
+
+    let info = new Information(data.get("nom"), data.get("quantite"), data.get("prixachat"), data.get("prixvente"), data.get("tva"), data.get("marheht"), data.get("prixventettc"),)
 
 
     render
@@ -100,5 +101,5 @@ function Information(nom, quantite, prixachat, prixvente, tva, margeht, prixvent
     this.prixventettc = prixvente;
 
 
-    
+
 }

@@ -1,7 +1,7 @@
 body {
   background-image: url(./R.jpg);
   background-repeat: no-repeat;
-  height: auto;
+  height: 100vh;
   width: auto;
 }
 
@@ -48,6 +48,18 @@ input {
   height: 27px;
   background-color: rgb(48, 29, 29);
   color: antiquewhite;
+}
+
+select {
+  border-radius: 5px;
+  height: 27px;
+  background-color: rgb(48, 29, 29);
+  color: antiquewhite;
+
+}
+
+.list {
+  min-height: 300px;
 }
 
 .container {
