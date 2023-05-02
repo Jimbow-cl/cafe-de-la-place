@@ -61,6 +61,16 @@ function render() {
     array.forEach(element => {
         consult = consult + `<p> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixventettc}  </p>`;
         
+        consultation.innerHTML = consult;
+
+        btnStock.forEach((element, index)=> {
+
+            element.addEventListener("click", () => {
+                consult.splice(index, 1);
+
+            })
+        })
+
     });
     
 }
@@ -73,7 +83,7 @@ function refresh() {
     let info = new Information (data.get("nom"),data.get("quantite"),data.get("prixachat"),data.get("prixvente"),data.get("tva"),data.get("marheht"),data.get("prixventettc"), )
 
 
-
+    render
 
 }
 
