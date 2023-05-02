@@ -55,8 +55,40 @@ submit.addEventListener("click", function (e) {
 
 });
 
+function render() {
+
+    let consult ="";
+    array.forEach(element => {
+        consult = consult + `<p> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixventettc}  </p>`;
+        
+    });
+    
+}
+
 //Envoi du Formulaire 
-function Refresh() {
+function refresh() {
+    
+    let data = new FormData (stock);
+
+    let info = new Information (data.get("nom"),data.get("quantite"),data.get("prixachat"),data.get("prixvente"),data.get("tva"),data.get("marheht"),data.get("prixventettc"), )
 
 
+
+
+}
+
+
+// Function constructeur
+
+function Information(nom, quantite, prixachat, prixvente, tva, margeht, prixvente) {
+    this.nom = nom;
+    this.quantite = quantite;
+    this.prixachat = prixachat;
+    this.prixvente = prixvente;
+    this.tva = tva;
+    this.marght = margeht;
+    this.prixventettc = prixvente;
+
+
+    
 }
