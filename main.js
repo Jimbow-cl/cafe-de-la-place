@@ -6,6 +6,7 @@ let stock = document.querySelector(".gestion");
 let gestion = document.querySelector(".consultation");
 let retour = document.getElementById("retour");
 let form = document.querySelector(".form")
+let info = document.querySelector(".info")
 
 // Bouton Menu Gestion Stock avec Mot de Passe : 0000
 btnStock.addEventListener("click", function () {
@@ -47,48 +48,64 @@ btnRetour.addEventListener("click", function () {
 
 });
 
-// Appui sur le bouton Submit avec EPreventDefault
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    let data = new FormData(form);
-    console.log(data.get("nom"), data.get("quantite"), data.get("prixachat"), data.get("prixvente"), data.get("tva"), data.get("marheht"), data.get("prixventettc"));
-    let info = new Information(data.get("nom"), data.get("quantite"), data.get("prixachat"), data.get("prixvente"), data.get("tva"), data.get("marheht"), data.get("prixventettc"),);
+let listing;
+// recuperation du local storage
+if (localStorage.getItem ("listing") == null) {
+    
+    listing = [];  
+} else {
+    listing = JSON.parse(localStorage.getItem("listing"));
+    render(listing); 
+}
 
-});
+function render(array) {
 
-function render() {
+    let li = "";
 
-    let consult = "";
-    array.forEach(element => {
-        consult = consult + `<p> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixventettc}  </p>`;
+    array.forEach((element,index) => {
+        li = li + `<li> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixttc}<button class="deleteButton">Supprimer</button></li>`;
+ 
+    })
 
-        consultation.innerHTML = consult;
+    info.innerHTML = li;
 
-        btnStock.forEach((element, index) => {
-
-            element.addEventListener("click", () => {
-                consult.splice(index, 1);
-
-            })
-        })
-
-    });
+    //bouton suprime liste
+    let btnsupp = document.querySelectorAll(".deleteButton");
+    btnsupp.forEach ((element, index) => {
+        element.addEventListener ("click",  ()=> {
+            listing.splice (index,1);
+            console.log(listing);
+            
+            render(listing);
+        });
+    })
 
 }
 
 
 
+// Appui sur le bouton Submit avec EPreventDefault
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    let data = new FormData(form);
+    console.log(data.get("nom"), data.get("quantite"), data.get("prixachat"), data.get("prixvente"), data.get("tva"), data.get("margeht"), data.get("prixttc"));
+    let information = new Information(data.get("nom"), data.get("quantite"), data.get("prixachat"), data.get("prixvente"), data.get("tva"), data.get("margeht"), data.get("prixttc"),);
+
+    listing.push(information);
+    localStorage.setItem("listing", JSON.stringify(listing));
+    render(listing);
+
+});
+
 // Function constructeur
 
-function Information(nom, quantite, prixachat, prixvente, tva, margeht, prixvente) {
+function Information(nom, quantite, prixachat, prixvente, tva, margeht, prixttc) {
     this.nom = nom;
     this.quantite = quantite;
     this.prixachat = prixachat;
     this.prixvente = prixvente;
     this.tva = tva;
-    this.marght = margeht;
-    this.prixventettc = prixvente;
-
-
+    this.margeht = margeht;
+    this.prixttc = prixttc;
 
 }
