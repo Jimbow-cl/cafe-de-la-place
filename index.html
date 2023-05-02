@@ -20,7 +20,7 @@
 
   </div>
   <div class="container">
-    <button class="button1 " id="retour">Retour</button>
+    <button class="retour" id="retour"></button>
     <div class="bienvenue">
       <h2>Bienvenue!</h2>
       <p> Veuillez selectionner votre choix.
@@ -36,32 +36,25 @@
       <p> Veuillez saisir les nouvelles données</p>
       <div class="gestion">
         <form id="stock">
-          <label for="nom">Nom du Produit</label>
-          <input type="text" id="nom" placeholder="" />
-          <label for="quantite">Qté</label>
-          <input type="number" id="quantite" placeholder="" min="0" />
-          <label for="prixachat">Prix d'Achat HT</label>
-          <input type="text" id="priachat" placeholder="€ HT" />
-          <label for="prixvente">Prix de Vente HT</label>
-          <input type="text" id="prixvente" placeholder="€ HT" />
+          <input type="text" id="nom" placeholder="Nom du Produit" />
+          <input type="number" id="quantite" placeholder="Qté" min="0" />
+          <input type="text" id="priachat" placeholder="Prix d'Achat HT" />
+          <input type="text" id="prixvente" placeholder="Prix de Vente HT" />
           <select id="tva">
             <option value="none">TVA?-</option>
             <option value="tva5">5%</option>
             <option value="tva10">10%</option>
             <option value="tva20">20%</option>
           </select>
-          <label for="margeht">Marge Hors Taxe</label>
           <input type="text" id="margeht" placeholder="Marge HT" disabled />
-          <label for="prixttc">Prix TTC</label>
           <input type="text" id="prixttc" placeholder="Prix TTC" disabled />
-          <label for="produit">Type de Produit</label>
           <select id="produit">
             <option value="none">--Selectionnez votre type--</option>
             <option value="ba">Boisson alcoolisée</option>
             <option value="bna">Boisson non alcoolisée</option>
             <option value="other">Autre</option>
           </select>
-          <button type="submit" id="submit">Rafraichir</button>
+          <button type="submit" id="submit"></button>
         </form>
       </div>
     </div>

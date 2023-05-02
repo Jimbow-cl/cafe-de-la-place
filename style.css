@@ -17,6 +17,7 @@ body {
   justify-content: center;
   color: blanchedalmond;
   margin-bottom: 30px;
+  text-decoration: underline 3px;
 }
 
 #passwd {
@@ -28,28 +29,58 @@ body {
   box-sizing: border-box;
   color: blanchedalmond;
   font-size: 16px;
+  width: 53%;
+}
+
+#submit {
+  margin-left: 10px;
+  background-image: url(./coche.png);
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+}
+
+input {
+  border-radius: 5px;
+  height: 27px;
+  background-color: rgb(48, 29, 29);
 }
 
 .container {
-  backdrop-filter: contrast(0.2);
+  backdrop-filter: grayscale(1);
   display: flex;
   flex-direction: column;
-  border-radius: 40px;
   border-style: double;
   padding-top: 20px;
   justify-content: flex-start;
   font-size: 33px;
   text-align: center;
   align-items: center;
+  width: 65%;
   color: blanchedalmond;
   margin-bottom: 30px;
-  height: 79vh;
+  height: 64vh;
+  margin-left: 307px;
+}
 
+h2 {
+  width: 50%;
+  background-color: #00000099;
+  border-radius: 10px;
+  border: 1px solid blanchedalmond;
 }
 
 .bienvenue {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.bienvenue p {
+  background-color: #00000099;
 }
 
 .gestion {
@@ -57,6 +88,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #00000099;
 }
 
 .consultation {
@@ -83,6 +115,7 @@ body {
   border: 0.125em solid #1A1A1A;
   border-radius: 0.9375em;
   box-sizing: border-box;
+  width: 80%;
   color: #3B3B3B;
   cursor: pointer;
   display: inline-block;
@@ -131,4 +164,13 @@ form {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.retour {
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
 }
