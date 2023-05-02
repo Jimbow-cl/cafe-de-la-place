@@ -3,21 +3,118 @@ body {
   background-repeat: no-repeat;
   height: auto;
   width: auto;
-}
-.titre {
-  display: flex;
-  justify-items: center;
-  justify-content: center;
-  text-align: center;
-  color: blanchedalmond;
-  text-decoration: underline;
+  font-family: "Roboto", sans-serif;
 }
 
-#produits {
-  height: 45px;
-  width: 20vw;
-  border-radius: 45%;
-  font-size: large;
-  justify-content: center;
+
+.titre {
+  font-family: "MonteCarlo", sans-serif; 
+ 
+  display: flex;
+ 
+  justify-content: right;
+  font-size: 40px;
   text-align: center;
+  color: #ffebcd;
+  margin-bottom: 11%;
+  -webkit-text-stroke: 0.2px rgb(199, 173, 109);
+  text-shadow: 1px 5px 10px #f9ecd9;
+
+}
+
+
+.container {
+  backdrop-filter: contrast(0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 32px;
+  text-align: center;
+  align-items: center;
+  color: rgb(246, 232, 210);
+  margin-bottom: 30px;
+  height: 70vh;
+  width: 110vh;
+  margin-block: 6%;
+  margin-left: 23%;
+  border-radius: 40px;
+  border-style: double;
+
+}
+
+.bienvenue {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.gestion {
+  display: flex;
+  flex-direction: column;
+}
+
+.consultation {
+  display: flex;
+  flex-direction: column;
+}
+
+.none {
+  display: none;
+}
+
+#retour {
+  display: none;
+}
+.gs {
+  margin: 10% 0% 0% 0% ;
+}
+
+.button1 {
+  appearance: none;
+  background-color: transparent;
+  border: 0.125em solid #1A1A1A;
+  border-radius: 0.9375em;
+  box-sizing: border-box;
+  color: #2e2d2d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 3.75em;
+  min-width: 0;
+  outline: none;
+  padding: 1em 2.3em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  
+}
+
+.button1:disabled {
+  pointer-events: none;
+}
+
+.button1:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button1:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+
+button{
+  margin-top: 5%;
+  
 }

@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <title>Café de la place</title>
-  </head>
 
-  <body>
-    <div class="titre">
-      <h1>CAFE DE LA PLACE</h1>
-      <pre></pre>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+  <title>Café de la place</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&family=Playball&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    
+</head>
+
+<body>
+  <div class="titre">
+    <h1>Café de la place</h1>
+
+  </div>
+  <div class="container">
+    <button class="button1 " id="retour">Retour</button>
+    <div class="bienvenue">
+      <h2>Bienvenue!</h2>
+      <p> Veuillez selectionner votre choix:</p>
+      <button class="button1" id="btnstock">Gestion</button>
+      <button class="button1" id="btnconsultation">Consultation</button>
     </div>
-    <input type="text" name="" id="produits" placeholder="produits" />
-    <input type="text" name="" id="produits" placeholder="" />
+    <div class="gestion none">
+      <h2 class="gs">Gestion des Stocks</h2>
+      <p> Veuillez saisir les nouvelles données</p>
+    </div>
+    <div class="consultation none">
+      <h2>Consultation des Stocks</h2>
+      <p> Voici le tableau comprennant vos stocks</p>
+    </div>
+
+
+
+
     <script type="text/javascript" src="./main.js"></script>
-  </body>
+  </div>
+</body>
+
 </html>
