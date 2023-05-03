@@ -73,10 +73,9 @@ function render(array) {
     let li = "";
 
     array.forEach((element, index) => {
-        li =
-            li +
-            `<li> ${element.nom}${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixttc}${element.poduit}<button class="modifyButton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
-    });
+        li = li + `<li> ${element.produit} ${element.nom} ${element.quantite}: Prix achat ${element.prixachat}, Prix vente  ${element.prixvente} <br> Votre marge est de:${element.margeht} <br> Prix TTC est de: ${element.prixttc}<button class="modifybutton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
+
+    })
 
     info.innerHTML = li;
 
@@ -90,6 +89,14 @@ function render(array) {
             render(listing);
         });
     });
+    //bouton modifier liste
+    //  let btnmod = document.querySelectorAll(".modifybutton");
+    // btnmod.forEach((element, index) => {
+    //      element.addEventListener("click", function () {
+    //console.log(listing.quantite"));
+
+    //     })
+    //});
 }
 
 // Appui sur le bouton Submit avec EPreventDefault
@@ -103,7 +110,8 @@ form.addEventListener("submit", function (e) {
         data.get("prixvente"),
         data.get("tva"),
         data.get("margeht"),
-        data.get("prixttc")
+        data.get("prixttc"),
+        data.get("produit")
     );
     let information = new Information(
         data.get("nom"),
@@ -112,7 +120,8 @@ form.addEventListener("submit", function (e) {
         data.get("prixvente"),
         data.get("tva"),
         data.get("margeht"),
-        data.get("prixttc")
+        data.get("prixttc"),
+        data.get("produit")
     );
 
     listing.push(information);
@@ -129,14 +138,16 @@ function Information(
     prixvente,
     tva,
     margeht,
-    prixttc
+    prixttc,
+    produit
 ) {
     this.nom = nom;
     this.quantite = quantite;
-    this.prixachat = prixachat;
-    this.prixvente = prixvente;
+    this.prixachat = prixachat + "€";
+    this.prixvente = prixvente + "€";
     this.tva = tva;
-    this.margeht = prixvente - prixachat, "€";
-    this.prixttc = parseFloat(prixvente) * parseFloat(tva);
+    this.margeht = prixvente - prixachat + "€";
+    this.prixttc = prixvente * (1 + tva / 100) + "€";
+    this.produit = produit;
 
 }
