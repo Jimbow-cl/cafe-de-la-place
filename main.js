@@ -73,7 +73,7 @@ function render(array) {
     let li = "";
 
     array.forEach((element, index) => {
-        li = li + `<li> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixttc}<button class="deleteButton">Supprimer</button></li>`;
+        li = li + `<li> ${element.nom} ${element.quantite}: Prix achat ${element.prixachat}, Prix vente  ${element.prixvente} <br> Votre marge est de:${element.margeht} <br> Prix TTC est de: ${element.prixttc}<button class="deleteButton">Supprimer</button></li>`;
 
     })
 
@@ -112,10 +112,10 @@ form.addEventListener("submit", function (e) {
 function Information(nom, quantite, prixachat, prixvente, tva, margeht, prixttc) {
     this.nom = nom;
     this.quantite = quantite;
-    this.prixachat = prixachat;
-    this.prixvente = prixvente;
-    this.tva = tva;
-    this.margeht = prixvente - prixachat, "€" ;
-    this.prixttc = parseFloat (prixvente) * parseFloat (tva);
+    this.prixachat = prixachat + "€";
+    this.prixvente = prixvente + "€";
+    this.tva =tva ;
+    this.margeht = prixvente - prixachat + "€" ;
+    this.prixttc =  prixvente *(1 +tva /100 )  + "€";
 
 }
