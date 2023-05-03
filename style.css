@@ -89,10 +89,8 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+  width: 500px;
 
-.bienvenue p {
-  background-color: #00000099;
 }
 
 .gestion {
