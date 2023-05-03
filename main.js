@@ -140,3 +140,8 @@ function Information(
     this.prixttc = parseFloat(prixvente) * parseFloat(tva);
 
 }
+
+function Afficher() {
+    let saisie = document.getElementById()
+
+}
