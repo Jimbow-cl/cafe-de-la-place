@@ -35,7 +35,8 @@ body {
   box-sizing: border-box;
   color: blanchedalmond;
   font-size: 16px;
-  width: 53%;
+  text-align: center;
+  width: 33%;
 }
 
 #submit {
@@ -123,6 +124,20 @@ h2 {
   display: none;
 }
 
+.retour {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  margin-left: -47%;
+  top: 10%;
+  background-image: url(./retour.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+  display: flex;
+}
+
 .gap {
   height: 10px;
 }
@@ -183,14 +198,4 @@ form {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
-
-.retour {
-  width: 80px;
-  height: 80px;
-  background-image: url(./retour.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 50px;
 }
