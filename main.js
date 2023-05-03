@@ -75,7 +75,7 @@ function render(array) {
     array.forEach((element, index) => {
         li =
             li +
-            `<li> ${element.nom}${element.quantite}: Prix achat ${element.prixachat}, Prix vente  ${element.prixvente} <br> Votre marge est de:${element.margeht} <br> Prix TTC est de: ${element.prixttc}${element.poduit}<button class="modifyButton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
+            `<li> ${element.quantite} ${element.nom} ${element.produit} : <br> Prix achat : ${element.prixachat} // Prix vente :  ${element.prixvente} // Votre marge est de : ${element.margeht} <br> Prix TTC est de : ${element.prixttc} <br> <button class="modifyButton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
     });
 
     info.innerHTML = li;
@@ -90,6 +90,10 @@ function render(array) {
             render(listing);
         });
     });
+
+    if (quantite.value < 5) {
+        quantite.value.style.color = "red";
+    }
 }
 
 // Appui sur le bouton Submit avec EPreventDefault
@@ -118,6 +122,7 @@ form.addEventListener("submit", function (e) {
     listing.push(information);
     localStorage.setItem("listing", JSON.stringify(listing));
     render(listing);
+    color(li);
 });
 
 // Function constructeur
@@ -140,3 +145,7 @@ function Information(
     this.prixttc =  prixvente *(1 +tva /100 )  + "€";
 
 }
+
+// color quantite stock 
+
+
