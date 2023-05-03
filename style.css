@@ -35,7 +35,7 @@ body {
   box-sizing: border-box;
   color: blanchedalmond;
   font-size: 16px;
-  <<<<<<< HEAD=======width: 53%;
+  width: 53%;
 }
 
 #submit {
@@ -54,7 +54,7 @@ input {
   height: 27px;
   background-color: rgb(48, 29, 29);
   color: antiquewhite;
-  >>>>>>>fee870b (png)
+
 }
 
 select {
@@ -157,6 +157,7 @@ h2 {
   touch-action: manipulation;
   will-change: transform;
 }
+
 
 .button1:disabled {
   pointer-events: none;
