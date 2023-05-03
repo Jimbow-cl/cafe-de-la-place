@@ -6,7 +6,7 @@ let retour = document.getElementById("retour");
 let form = document.querySelector(".form")
 let info = document.querySelector(".info")
 
-// Bouton Menu Gestion Stock avec Mot de Passe : 0000
+// Bouton Menu Gestion Stock avec Mot de Passe
 btnStock.addEventListener("click", function () {
     let passwd = document.querySelector("#passwd");
     passwd.style.display = "block";
@@ -69,7 +69,7 @@ function render(array) {
     let li = "";
 
     array.forEach((element, index) => {
-        li = li + `<li> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixttc}<button class="deleteButton">Supprimer</button></li>`;
+        li = li + `<li> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixttc}<button class="modifyButton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
 
     })
 
