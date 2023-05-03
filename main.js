@@ -47,35 +47,58 @@ btnRetour.addEventListener("click", function () {
 
 
 });
+// création de la fonction pour calculer la marge faite 
+function calculer(prixvente, prixht) {
+    let calcul = prixvente - prixht;
+    return calcul;
+}
+
+// Création de la fonctio qui permeettra de calculer le prix ttc
+function ttc(prixvente, tva) {
+    let ttc = prixvente * tva;
+    return ttc;
+}
+
+
+
+// Appui sur le bouton Submit avec EPreventDefault
+submit.addEventListener("click", function (e) {
+    e.preventDefault();
+    let marge = calculer(inputprixdeventeHT.value, inputPrixdeVenteHT.value);
+    let prixtaxer = ttc(inputPrixdeVenteHT.value, tva.value);
+
+
+
+});
 
 let listing;
 // recuperation du local storage
-if (localStorage.getItem ("listing") == null) {
-    
-    listing = [];  
+if (localStorage.getItem("listing") == null) {
+
+    listing = [];
 } else {
     listing = JSON.parse(localStorage.getItem("listing"));
-    render(listing); 
+    render(listing);
 }
 
 function render(array) {
 
     let li = "";
 
-    array.forEach((element,index) => {
+    array.forEach((element, index) => {
         li = li + `<li> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixttc}<button class="deleteButton">Supprimer</button></li>`;
- 
+
     })
 
     info.innerHTML = li;
 
     //bouton suprime liste
     let btnsupp = document.querySelectorAll(".deleteButton");
-    btnsupp.forEach ((element, index) => {
-        element.addEventListener ("click",  ()=> {
-            listing.splice (index,1);
+    btnsupp.forEach((element, index) => {
+        element.addEventListener("click", () => {
+            listing.splice(index, 1);
             console.log(listing);
-            
+
             render(listing);
         });
     })
