@@ -35,8 +35,6 @@ btnStock.addEventListener("click", function () {
             nom.disabled = "true";
             px.disabled = "true";
             pv.disabled = "true";
-            margeht.disabled = "true";
-            prixttc.disabled = "true";
             tva.disabled = "true";
             produit.disabled = "true";
         } else {
