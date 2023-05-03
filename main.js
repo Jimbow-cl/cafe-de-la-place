@@ -3,115 +3,135 @@ let btnStock = document.getElementById("btnstock");
 let btnRetour = document.getElementById("retour");
 let stock = document.querySelector(".gestion");
 let retour = document.getElementById("retour");
-let form = document.querySelector(".form")
-let info = document.querySelector(".info")
+let form = document.querySelector(".form");
+let info = document.querySelector(".info");
+
+let nom = document.getElementById("nom");
+let qdt = document.getElementById("quantite");
+let px = document.getElementById("prix achat");
+let pv = document.getElementById("prix vente");
+let margeht = document.getElementById("margeht");
+let prixttc = document.getElementById("prixttc");
 
 // Bouton Menu Gestion Stock avec Mot de Passe
 btnStock.addEventListener("click", function () {
-    let passwd = document.querySelector("#passwd");
-    passwd.style.display = "block";
-    passwd.addEventListener("keypress", function (e) {
-        if (e.key === "Enter" && passwd.value == "0000") {
-            bienvenue.style.display = "none";
-            stock.style.display = "flex";
-            retour.style.display = "flex"
-            passwd.value = "";
-            passwd.style.display = "none";
-        }
-        if (e.key === "Enter" && passwd.value == "1111") {
-            bienvenue.style.display = "none";
-            stock.style.display = "flex";
-            retour.style.display = "flex"
-            passwd.value = "";
-            passwd.style.display = "none";
-        }
-        else {
-
-        }
-    })
-
-
+  let passwd = document.querySelector("#passwd");
+  passwd.style.display = "block";
+  passwd.addEventListener("keypress", function (e) {
+    if (e.key === "Enter" && passwd.value == "0000") {
+      bienvenue.style.display = "none";
+      stock.style.display = "flex";
+      retour.style.display = "flex";
+      passwd.value = "";
+      passwd.style.display = "none";
+    }
+    if (e.key === "Enter" && passwd.value == "1111") {
+      bienvenue.style.display = "none";
+      stock.style.display = "flex";
+      retour.style.display = "flex";
+      passwd.value = "";
+      passwd.style.display = "none";
+      nom.style.disabled = "true";
+    } else {
+    }
+  });
 });
 //Bouton Retour
 btnRetour.addEventListener("click", function () {
-    bienvenue.style.display = "flex";
-    stock.style.display = "none";
-    retour.style.display = "none";
-
-
-
+  bienvenue.style.display = "flex";
+  stock.style.display = "none";
+  retour.style.display = "none";
 });
-// création de la fonction pour calculer la marge faite 
+// création de la fonction pour calculer la marge faite
 function calculer(prixvente, prixht) {
-    let calcul = prixvente - prixht;
-    return calcul;
+  let calcul = prixvente - prixht;
+  return calcul;
 }
 
 // Création de la fonctio qui permeettra de calculer le prix ttc
 function ttc(prixvente, tva) {
-    let ttc = prixvente * tva;
-    return ttc;
+  let ttc = prixvente * tva;
+  return ttc;
 }
-
 
 let listing;
 // recuperation du local storage
 if (localStorage.getItem("listing") == null) {
-
-    listing = [];
+  listing = [];
 } else {
-    listing = JSON.parse(localStorage.getItem("listing"));
-    render(listing);
+  listing = JSON.parse(localStorage.getItem("listing"));
+  render(listing);
 }
 
 function render(array) {
+  let li = "";
 
-    let li = "";
+  array.forEach((element, index) => {
+    li =
+      li +
+      `<li> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixttc}<button class="modifyButton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
+  });
 
-    array.forEach((element, index) => {
-        li = li + `<li> ${element.nom} ${element.quantite} ${element.prixachat} ${element.prixvente}${element.tva}${element.margeht}${element.prixttc}<button class="modifyButton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
+  info.innerHTML = li;
 
-    })
+  //bouton suprime liste
+  let btnsupp = document.querySelectorAll(".deleteButton");
+  btnsupp.forEach((element, index) => {
+    element.addEventListener("click", () => {
+      listing.splice(index, 1);
+      console.log(listing);
 
-    info.innerHTML = li;
-
-    //bouton suprime liste
-    let btnsupp = document.querySelectorAll(".deleteButton");
-    btnsupp.forEach((element, index) => {
-        element.addEventListener("click", () => {
-            listing.splice(index, 1);
-            console.log(listing);
-
-            render(listing);
-        });
-    })
-
+      render(listing);
+    });
+  });
 }
 
 // Appui sur le bouton Submit avec EPreventDefault
 form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    let marge = calculer(inputprixdeventeHT.value, inputPrixdeVenteHT.value);
-    let prixtaxer = ttc(inputPrixdeVenteHT.value, tva.value);
-    let data = new FormData(form);
-    console.log(data.get("nom"), data.get("quantite"), data.get("prixachat"), data.get("prixvente"), data.get("tva"), data.get("margeht"), data.get("prixttc"));
-    let information = new Information(data.get("nom"), data.get("quantite"), data.get("prixachat"), data.get("prixvente"), data.get("tva"), data.get("margeht"), data.get("prixttc"),);
+  e.preventDefault();
+  let marge = calculer(inputprixdeventeHT.value, inputPrixdeVenteHT.value);
+  let prixtaxer = ttc(inputPrixdeVenteHT.value, tva.value);
+  let data = new FormData(form);
+  console.log(
+    data.get("nom"),
+    data.get("quantite"),
+    data.get("prixachat"),
+    data.get("prixvente"),
+    data.get("tva"),
+    data.get("margeht"),
+    data.get("prixttc")
+  );
+  let information = new Information(
+    data.get("nom"),
+    data.get("quantite"),
+    data.get("prixachat"),
+    data.get("prixvente"),
+    data.get("tva"),
+    data.get("margeht"),
+    data.get("prixttc")
+  );
 
-    listing.push(information);
-    localStorage.setItem("listing", JSON.stringify(listing));
-    render(listing);
-
+  listing.push(information);
+  localStorage.setItem("listing", JSON.stringify(listing));
+  render(listing);
 });
 
 // Function constructeur
 
-function Information(nom, quantite, prixachat, prixvente, tva, margeht, prixttc) {
-    this.nom = nom;
-    this.quantite = quantite;
-    this.prixachat = prixachat;
-    this.prixvente = prixvente;
-    this.tva = tva;
-    this.margeht = margeht;
-    this.prixttc = prixttc;
-
+function Information(
+  nom,
+  quantite,
+  prixachat,
+  prixvente,
+  tva,
+  margeht,
+  prixttc
+) {
+  this.nom = nom;
+  this.quantite = quantite;
+  this.prixachat = prixachat;
+  this.prixvente = prixvente;
+  this.tva = tva;
+  this.margeht = margeht;
+  this.prixttc = prixttc;
 }
