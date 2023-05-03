@@ -47,39 +47,26 @@ btnRetour.addEventListener("click", function () {
 
 
 });
-// création de la fonction pour calculer la marge faite 
-function calculer(prixvente, prixht) {
-    let calcul = prixvente - prixht;
-    return calcul;
-}
 
-// Création de la fonctio qui permeettra de calculer le prix ttc
-function ttc(prixvente, tva) {
-    let ttc = prixvente * tva;
-    return ttc;
-}
-
-
-
-// Appui sur le bouton Submit avec EPreventDefault
-submit.addEventListener("click", function (e) {
-    e.preventDefault();
-    let marge = calculer(inputprixdeventeHT.value, inputPrixdeVenteHT.value);
-    let prixtaxer = ttc(inputPrixdeVenteHT.value, tva.value);
-
-
-
-});
 
 let listing;
-// recuperation du local storage
-if (localStorage.getItem("listing") == null) {
 
-    listing = [];
-} else {
-    listing = JSON.parse(localStorage.getItem("listing"));
-    render(listing);
-}
+addEventListener("DOMContentLoaded", () => {
+    // recuperation du local storage
+    let cafe = JSON.parse(localStorage.getItem("cafe"));
+
+    if (cafe == null) {
+        listing = [];
+
+    } else {
+       listing = cafe;
+       render(listing);
+    }
+
+
+})
+
+
 
 function render(array) {
 
@@ -98,7 +85,7 @@ function render(array) {
         element.addEventListener("click", () => {
             listing.splice(index, 1);
             console.log(listing);
-
+            localStorage.setItem("cafe", JSON.stringify(listing));
             render(listing);
         });
     })
@@ -128,7 +115,7 @@ function Information(nom, quantite, prixachat, prixvente, tva, margeht, prixttc)
     this.prixachat = prixachat;
     this.prixvente = prixvente;
     this.tva = tva;
-    this.margeht = margeht;
-    this.prixttc = prixttc;
+    this.margeht = prixvente - prixachat, "€" ;
+    this.prixttc = parseFloat (prixvente) * parseFloat (tva);
 
 }
