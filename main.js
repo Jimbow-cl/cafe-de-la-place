@@ -17,6 +17,7 @@ let produit = document.getElementById("produit");
 // Bouton Menu Gestion Stock avec Mot de Passe
 btnStock.addEventListener("click", function () {
     let passwd = document.querySelector("#passwd");
+    let textdonne = document.querySelector(".textonne");
     passwd.style.display = "block";
     passwd.addEventListener("keypress", function (e) {
         if (e.key === "Enter" && passwd.value == "0000") {
@@ -32,12 +33,10 @@ btnStock.addEventListener("click", function () {
             retour.style.display = "flex";
             passwd.value = "";
             passwd.style.display = "none";
-            nom.disabled = "true";
-            px.disabled = "true";
-            pv.disabled = "true";
-            tva.disabled = "true";
-            produit.disabled = "true";
-        } else {
+            form.style.display = "none"
+            textdonne.style.display = "none"
+            modifybutton.disabled = "true";
+            deletebutton.disabled = "true";
         }
     });
 });
@@ -63,22 +62,47 @@ addEventListener("DOMContentLoaded", () => {
     }
 
 
-})
+});
 
+function update(currentIdToUpdate) {
+    let information = listing.find(function (element) {
+        return element.id == currentIdToUpdate;
+    });
 
+    form.elements["currentIdToUpdate"].value = information.id;
+    form.elements["produit"].value = information.produit;
+    form.elements["nom"].value = information.nom;
+    form.elements["quantite"].value = information.quantite;
+    form.elements["prixachat"].value = information.prixachat;
+    form.elements["prixvente"].value = information.prixvente;
+    form.elements["tva"].value = information.tva;
+    form.elements["degre"].value = information.degre;
+};
 
 function render(array) {
-    let li = "";
+    let tr = "";
 
     array.forEach((element, index) => {
-        li = li + `<li> ${element.produit} ${element.nom} ${element.quantite}: Prix achat ${element.prixachat}, Prix vente  ${element.prixvente} <br> Votre marge est de:${element.margeht} <br> Prix TTC est de: ${element.prixttc}<button class="modifybutton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
+        tr = tr + `<tr><td>${element.id}</td>
+        <td> ${element.produit} </td>
+        <td> ${element.nom} </td>
+        <td> ${element.quantite}</td>
+        <td>${element.prixachat}</td>
+        <td> ${element.prixvente} </td>
+        <td>${element.tva}</td>
+        <td> ${element.margeht} </td>
+        <td> ${element.prixttc}</td>
+        <td> ${element.degre} </td>
+        <td><button class="modifybutton" onclick="update(${element.id})">Modifier</button></td>
+        <td><button class="deletebutton">Supprimer</button></td>
+        <td><button class="stockMoins">Stock -1</button></td></tr>`;
 
     })
 
-    info.innerHTML = li;
+    info.innerHTML = tr;
 
     //bouton suprime liste
-    let btnsupp = document.querySelectorAll(".deleteButton");
+    let btnsupp = document.querySelectorAll(".deletebutton");
     btnsupp.forEach((element, index) => {
         element.addEventListener("click", () => {
             listing.splice(index, 1);
@@ -88,13 +112,8 @@ function render(array) {
         });
     });
     //bouton modifier liste
-    //  let btnmod = document.querySelectorAll(".modifybutton");
-    // btnmod.forEach((element, index) => {
-    //      element.addEventListener("click", function () {
-    //console.log(listing.quantite"));
+    let btnmod = document.querySelectorAll(".modifybutton");
 
-    //     })
-    //});
 }
 
 // Appui sur le bouton Submit avec EPreventDefault
@@ -109,20 +128,40 @@ form.addEventListener("submit", function (e) {
         data.get("tva"),
         data.get("margeht"),
         data.get("prixttc"),
-        data.get("produit")
+        data.get("produit"),
+        data.get("degre")
     );
-    let information = new Information(
-        data.get("nom"),
-        data.get("quantite"),
-        data.get("prixachat"),
-        data.get("prixvente"),
-        data.get("tva"),
-        data.get("margeht"),
-        data.get("prixttc"),
-        data.get("produit")
-    );
-
-    listing.push(information);
+    let information;
+    if (data.get("currentIdToUpdate") == "") {
+        information = new Information(
+            Date.now(),
+            data.get("nom"),
+            data.get("quantite"),
+            data.get("prixachat"),
+            data.get("prixvente"),
+            data.get("tva"),
+            data.get("margeht"),
+            data.get("prixttc"),
+            data.get("produit"),
+            data.get("degre")
+        );
+        listing.push(information);
+    } else {
+        let currentIdToUpdate = data.get("currentIdToUpdate");
+        information = listing.find(function (element) {
+            return element.id == currentIdToUpdate;
+        });
+        information.nom = data.get("nom");
+        information.quantite = data.get("quantite");
+        information.prixachat = data.get("prixachat");
+        information.prixvente = data.get("prixvente");
+        information.tva = data.get("tva");
+        information.margeht = data.get("margeht");
+        information.prixttc = data.get("prixttc");
+        information.produit = data.get("produit");
+        information.degre = data.get("degre");
+    }
+    form.reset();
     localStorage.setItem("listing", JSON.stringify(listing));
     render(listing);
 });
@@ -130,6 +169,7 @@ form.addEventListener("submit", function (e) {
 // Function constructeur
 
 function Information(
+    id,
     nom,
     quantite,
     prixachat,
@@ -137,15 +177,18 @@ function Information(
     tva,
     margeht,
     prixttc,
-    produit
+    produit,
+    degre
 ) {
+    this.id = id;
     this.nom = nom;
     this.quantite = quantite;
     this.prixachat = prixachat + "€";
     this.prixvente = prixvente + "€";
-    this.tva = tva;
+    this.tva = tva + "%";
     this.margeht = prixvente - prixachat + "€";
     this.prixttc = prixvente * (1 + tva / 100) + "€";
     this.produit = produit;
+    this.degre = degre;
 
 }
