@@ -1,79 +1,72 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=MonteCarlo&family=Playball&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Café de la place</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="./style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=MonteCarlo&family=Playball&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-    rel="stylesheet">
-  <title>Café de la place</title>
-</head>
-
-<body>
-  <div class="titre">
-    <h1>Café de la place</h1>
-
-  </div>
-  <div class="container">
-    <button class="retour" id="retour"></button>
-    <div class="bienvenue">
-      <h2>Bienvenue!</h2>
-      <p> Veuillez selectionner votre choix.
-        Gestion de votre stock ou Consultation</p>
-      <button class="button1" id="btnstock">Gestion</button>
-      <div class="gap"></div>
-      <button class="button1" id="btnconsultation">Consultation</button>
-      <div class="gap"></div>
-      <input type="password" id="passwd" placeholder="Mot de Passe Gestionnaire" />
+  <body>
+    <div class="titre">
+      <h1>Café de la place</h1>
     </div>
-    <div class="gestion none">
-      <h2>Gestion des Stocks</h2>
-      <p> Veuillez saisir les nouvelles données</p>
-      <div class="gestion">
-        <form id="stock">
-          <input type="text" id="nom" placeholder="Nom du Produit" />
-          <input type="number" id="quantite" placeholder="Qté" min="0" />
-          <input type="text" id="priachat" placeholder="Prix d'Achat HT" />
-          <input type="text" id="prixvente" placeholder="Prix de Vente HT" />
-          <select id="tva">
-            <option value="none">TVA?-</option>
-            <option value="tva5">5%</option>
-            <option value="tva10">10%</option>
-            <option value="tva20">20%</option>
-          </select>
-          <input type="text" id="margeht" placeholder="Marge HT" disabled />
-          <input type="text" id="prixttc" placeholder="Prix TTC" disabled />
-          <select id="produit">
-            <option value="none">--Selectionnez votre type--</option>
-            <option value="ba">Boisson alcoolisée</option>
-            <option value="bna">Boisson non alcoolisée</option>
-            <option value="other">Autre</option>
-          </select>
-          <button type="submit" id="submit"></button>
-        </form>
+    <div class="container">
+      <button class="retour" id="retour"></button>
+      <div class="bienvenue">
+        <h2>Bienvenue!</h2>
+        <p>
+          Veuillez selectionner votre choix. Gestion de votre stock ou
+          Consultation
+        </p>
+
+        <div class="gap"></div>
+        <button class="button1" id="btnstock">Acces</button>
+        <div class="gap"></div>
+        <input
+          type="password"
+          id="passwd"
+          placeholder="                                 Mot de Passe Gestionnaire"
+        />
       </div>
-      <p> Votre liste de produit</p>
-      <ul class="info"></ul>
-    </div>
-    <div class="consultation none">
-      <h2>Consultation des Stocks</h2>
-      <p> Voici le tableau comprennant vos stocks</p>
-      <div id="consultation">
-
+      <div class="gestion none">
+        <h2>Gestion des Stocks</h2>
+        <p>Veuillez saisir les nouvelles données</p>
+        <div class="gestion">
+          <form id="stock">
+            <input type="text" id="nom" placeholder="Nom du Produit" />
+            <input type="number" id="quantite" placeholder="Qté" min="0" />
+            <input type="text" id="priachat" placeholder="Prix d'Achat HT" />
+            <input type="text" id="prixvente" placeholder="Prix de Vente HT" />
+            <select id="tva">
+              <option value="none">TVA?-</option>
+              <option value="tva5">5%</option>
+              <option value="tva10">10%</option>
+              <option value="tva20">20%</option>
+            </select>
+            <input type="text" id="margeht" placeholder="Marge HT" disabled />
+            <input type="text" id="prixttc" placeholder="Prix TTC" disabled />
+            <select id="produit">
+              <option value="none">--Selectionnez votre type--</option>
+              <option value="ba">Boisson alcoolisée</option>
+              <option value="bna">Boisson non alcoolisée</option>
+              <option value="other">Autre</option>
+            </select>
+            <button type="submit" id="submit"></button>
+          </form>
+        </div>
+        <p>Votre liste de produit</p>
         <ul class="info"></ul>
       </div>
+
+      <script type="text/javascript" src="./main.js"></script>
     </div>
-
-
-
-
-    <script type="text/javascript" src="./main.js"></script>
-  </div>
-</body>
-
+  </body>
 </html>
