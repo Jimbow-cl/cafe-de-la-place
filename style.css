@@ -7,7 +7,13 @@ body {
 
 .titre {
   font-family: "MonteCarlo", sans-serif;
+  font-family: "MonteCarlo", sans-serif;
   display: flex;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 0px;
+  -webkit-text-stroke: 0.2px rgb(199, 173, 109);
+  text-shadow: 1px 5px 10px #f9ecd9;
   font-size: 40px;
   text-align: center;
   margin-bottom: 0px;
@@ -17,6 +23,7 @@ body {
   justify-content: center;
   color: blanchedalmond;
   margin-bottom: 30px;
+  text-decoration: underline 3px;
 }
 
 #passwd {
@@ -28,9 +35,7 @@ body {
   box-sizing: border-box;
   color: blanchedalmond;
   font-size: 16px;
-<<<<<<< HEAD
-=======
-  width: 53%;
+  <<<<<<< HEAD=======width: 53%;
 }
 
 #submit {
@@ -49,7 +54,7 @@ input {
   height: 27px;
   background-color: rgb(48, 29, 29);
   color: antiquewhite;
->>>>>>> fee870b (png)
+  >>>>>>>fee870b (png)
 }
 
 select {
@@ -65,7 +70,7 @@ select {
 }
 
 .container {
-  backdrop-filter: contrast(0.2);
+  backdrop-filter: grayscale(1);
   display: flex;
   flex-direction: column;
   border-radius: 40px;
@@ -75,15 +80,28 @@ select {
   font-size: 33px;
   text-align: center;
   align-items: center;
+  width: 65%;
   color: blanchedalmond;
   margin-bottom: 30px;
-  height: 79vh;
+  height: 64vh;
+  margin-left: 307px;
+}
 
+h2 {
+  width: 50%;
+  background-color: #00000099;
+  border-radius: 10px;
+  border: 1px solid blanchedalmond;
 }
 
 .bienvenue {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.bienvenue p {
+  background-color: #00000099;
 }
 
 .gestion {
@@ -91,6 +109,7 @@ select {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #00000099;
 }
 
 .consultation {
@@ -117,6 +136,7 @@ select {
   border: 0.125em solid #1A1A1A;
   border-radius: 0.9375em;
   box-sizing: border-box;
+  width: 80%;
   color: #3B3B3B;
   cursor: pointer;
   display: inline-block;
@@ -165,4 +185,14 @@ form {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.retour {
+  width: 80px;
+  height: 80px;
+  background-image: url(./retour.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
 }
