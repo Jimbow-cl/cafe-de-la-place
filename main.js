@@ -76,7 +76,7 @@ function render(array) {
         li =
             li +
             `<li> 
-            ${element.quantite} ${element.nom} ${element.produit} : <br> Prix achat : ${element.prixachat} // Prix vente :  ${element.prixvente} // Votre marge est de : ${element.margeht} <br> Prix TTC est de : ${element.prixttc} <br> <button class="modifyButton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
+            ${element.quantite} ${element.nom} ${element.produit} : Prix achat : ${element.prixachat} // Prix vente :  ${element.prixvente} // Votre marge est de : ${element.margeht}Prix TTC est de : ${element.prixttc}<button class="modifyButton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
     });
 
     info.innerHTML = li;
