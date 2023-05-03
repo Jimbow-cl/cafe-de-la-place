@@ -91,9 +91,10 @@ function render(array) {
         });
     });
 
-    if (quantite.value < 5) {
-        quantite.value.style.color = "red";
+    if (quantite < 5) {
+        quantite.style.color = "red";
     }
+
 }
 
 // Appui sur le bouton Submit avec EPreventDefault
@@ -122,7 +123,7 @@ form.addEventListener("submit", function (e) {
     listing.push(information);
     localStorage.setItem("listing", JSON.stringify(listing));
     render(listing);
-    color(li);
+    
 });
 
 // Function constructeur
@@ -146,6 +147,5 @@ function Information(
 
 }
 
-// color quantite stock 
 
 
