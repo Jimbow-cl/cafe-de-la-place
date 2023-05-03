@@ -75,7 +75,8 @@ function render(array) {
     array.forEach((element, index) => {
         li =
             li +
-            `<li> ${element.quantite} ${element.nom} ${element.produit} : <br> Prix achat : ${element.prixachat} // Prix vente :  ${element.prixvente} // Votre marge est de : ${element.margeht} <br> Prix TTC est de : ${element.prixttc} <br> <button class="modifyButton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
+            `<li> 
+            ${element.quantite} ${element.nom} ${element.produit} : <br> Prix achat : ${element.prixachat} // Prix vente :  ${element.prixvente} // Votre marge est de : ${element.margeht} <br> Prix TTC est de : ${element.prixttc} <br> <button class="modifyButton">Modifier</button><button class="deleteButton">Supprimer</button></li>`;
     });
 
     info.innerHTML = li;
@@ -91,9 +92,7 @@ function render(array) {
         });
     });
 
-    if (quantite < 5) {
-        quantite.style.color = "red";
-    }
+  
 
 }
 
