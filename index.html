@@ -20,7 +20,6 @@
 
   </div>
   <div class="container">
-    <button class="retour" id="retour"></button>
     <div class="bienvenue">
       <h2>Bienvenue!</h2>
       <p> Veuillez selectionner votre choix.
@@ -31,32 +30,32 @@
       <input type="password" id="passwd" placeholder="Mot de Passe Gestionnaire" />
     </div>
     <div class="gestion none">
+      <div class="retourner">
+        <button class="retour" id="retour"></button>
+      </div>
       <h2>Gestion des Stocks</h2>
       <p> Veuillez saisir les nouvelles données</p>
       <div class="gestion">
         <form class="form">
+          <select id="produit" name="produit">
+            <option value="none">--Selectionnez votre type--</option>
+            <option value="Boisson alcoolisée">Boisson alcoolisée</option>
+            <option value="Boisson non alcoolisée">Boisson non alcoolisée</option>
+            <option value="Autrer">Autre</option>
+          </select>
           <input type="text" id="nom" name="nom" placeholder="Nom du Produit" />
           <input type="number" id="quantite" name="quantite" placeholder="Qté" min="0" />
           <input type="text" id="prixachat" name="prixachat" placeholder="Prix d'Achat HT" />
           <input type="text" id="prixvente" name="prixvente" placeholder="Prix de Vente HT" />
           <select id="tva" name="tva">
-            <option value="none">TVA?-</option>
-            <option value="tva5">5%</option>
-            <option value="tva10">10%</option>
-            <option value="tva20">20%</option>
+            <option value="20">20%</option>
+
           </select>
-          <input type="text" id="margeht" name="margeht" placeholder="Marge HT" disabled />
-          <input type="text" id="prixttc" name="prixttc" placeholder="Prix TTC" disabled />
-          <select id="produit" name="produit">
-            <option value="none">--Selectionnez votre type--</option>
-            <option value="ba">Boisson alcoolisée</option>
-            <option value="bna">Boisson non alcoolisée</option>
-            <option value="other">Autre</option>
-          </select>
+
           <button type="submit" id="submit"></button>
         </form>
       </div>
-      <p> Votre liste de produit</p>
+      <p> Votre liste de produit :<br> Type: Nom : Prix d'achat, prix de vente </p>
 
       <ul class="info">
 
