@@ -38,6 +38,7 @@ btnStock.addEventListener("click", function () {
       textdonne.style.display = "none";
       modifybutton.disabled = "true";
       deletebutton.disabled = "true";
+      table.style.display = "block";
     }
   });
 });
