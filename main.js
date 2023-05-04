@@ -56,7 +56,6 @@ btnRetour.addEventListener("click", function () {
 let listing;
 // Local Storage
 addEventListener("DOMContentLoaded", () => {
-    // recuperation du local storage
     let cafe = JSON.parse(localStorage.getItem("cafe"));
 
     if (cafe == null) {
@@ -71,6 +70,13 @@ addEventListener("DOMContentLoaded", () => {
 
 });
 
+window.onbeforeunload = function () {
+    if (localStorage != "") {
+        localStorage.clear();
+        localStorage.setItem("cafe", JSON.stringify(listing))
+    }
+
+};
 
 
 // Fonction de Modification du contenu de la liste
@@ -97,8 +103,7 @@ function render(array) {
         tr = tr + `<tr><td>${element.id}</td>
         <td> ${element.produit} </td>
         <td> ${element.nom} </td>
-        <td> <input onchange= "color()" id="quantite" type="number" value="${element.quantite}"/> </td>
-        <td>${element.prixachat} €</td>
+        <td> <input  type="number" id="quantite" name="quantite" class="${element.quantite < 5 ? "low" : "high"}"  value ="${element.quantite}"/></td>        <td>${element.prixachat} €</td>
         <td> ${element.prixvente} €</td>
         <td> ${element.tva} %</td>
         <td> ${element.margeht} € </td>
@@ -106,7 +111,6 @@ function render(array) {
         <td> ${element.degre} °</td>
         <td><button class="modifybutton button2" onclick="update(${element.id})">Modifier</button></td>
         <td><button class="deletebutton button2">Supprimer</button></td>`;
-        localStorage.setItem("cafe", JSON.stringify(listing));
 
     })
 
@@ -118,7 +122,6 @@ function render(array) {
         element.addEventListener("click", () => {
             listing.splice(index, 1);
             console.log(listing);
-            localStorage.setItem("cafe", JSON.stringify(listing));
             render(listing);
         });
     });
@@ -212,17 +215,5 @@ function degres() {
         degre.style.display = "none";
     };
 }
-// Fonction Color Quantité
-function color() {
-    if (quantite.value <= 5) {
-        quantite.className = "high";
 
 
-    }
-    if (quantite.value > 5) {
-        quantite.className = "low";
-
-    }
-
-
-}
