@@ -49,6 +49,7 @@ btnRetour.addEventListener("click", function () {
 
 
 let listing;
+
 addEventListener("DOMContentLoaded", () => {
     // recuperation du local storage
     let cafe = JSON.parse(localStorage.getItem("cafe"));
@@ -58,11 +59,15 @@ addEventListener("DOMContentLoaded", () => {
 
     } else {
         listing = cafe;
+        localStorage.clear();
         render(listing);
     }
 
 
 });
+
+
+
 
 function update(currentIdToUpdate) {
     let information = listing.find(function (element) {
@@ -96,6 +101,7 @@ function render(array) {
         <td><button class="modifybutton" onclick="update(${element.id})">Modifier</button></td>
         <td><button class="deletebutton">Supprimer</button></td>
         <td><button class="stockMoins">Stock -1</button></td></tr>`;
+        localStorage.setItem("cafe", JSON.stringify(listing));
 
     })
 
@@ -161,7 +167,6 @@ form.addEventListener("submit", function (e) {
         information.degre = data.get("degre");
     }
     form.reset();
-    localStorage.setItem("listing", JSON.stringify(listing));
     render(listing);
 });
 
