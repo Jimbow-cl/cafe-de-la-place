@@ -111,8 +111,7 @@ function render(array) {
             render(listing);
         });
     });
-    //bouton modifier liste
-    let btnmod = document.querySelectorAll(".modifybutton");
+
 
 }
 
