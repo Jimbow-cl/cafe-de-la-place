@@ -20,7 +20,7 @@ btnStock.addEventListener("click", function () {
     let textdonne = document.querySelector(".textdonne");
     passwd.style.display = "block";
     passwd.addEventListener("keypress", function (e) {
-        if (e.key === "Enter" && passwd.value == "1") {
+        if (e.key === "Enter" && passwd.value == "0000") {
             bienvenue.style.display = "none";
             stock.style.display = "flex";
             retour.style.display = "flex";
@@ -29,7 +29,7 @@ btnStock.addEventListener("click", function () {
             form.style.display = "flex";
             textdonne.style.display = "flex"
         }
-        if (e.key === "Enter" && passwd.value == "1") {
+        if (e.key === "Enter" && passwd.value == "1111") {
             bienvenue.style.display = "none";
             stock.style.display = "flex";
             retour.style.display = "flex";
