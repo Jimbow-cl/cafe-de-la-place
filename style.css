@@ -211,3 +211,11 @@ form {
   border-radius: 50px;
 }
 
+.low { 
+  color:red;
+
+}
+
+.high {
+   color:#3b3b3b;
+} 

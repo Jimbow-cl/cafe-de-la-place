@@ -20,14 +20,14 @@ btnStock.addEventListener("click", function () {
     let textdonne = document.querySelector(".textonne");
     passwd.style.display = "block";
     passwd.addEventListener("keypress", function (e) {
-        if (e.key === "Enter" && passwd.value == "0000") {
+        if (e.key === "Enter" && passwd.value == "1") {
             bienvenue.style.display = "none";
             stock.style.display = "flex";
             retour.style.display = "flex";
             passwd.value = "";
             passwd.style.display = "none";
         }
-        if (e.key === "Enter" && passwd.value == "1111") {
+        if (e.key === "Enter" && passwd.value == "1") {
             bienvenue.style.display = "none";
             stock.style.display = "flex";
             retour.style.display = "flex";
@@ -83,10 +83,11 @@ function render(array) {
     let tr = "";
 
     array.forEach((element, index) => {
+
         tr = tr + `<tr><td>${element.id}</td>
         <td> ${element.produit} </td>
         <td> ${element.nom} </td>
-        <td> ${element.quantite}</td>
+        <td > <input type="number" value="${element.quantite}"  /> </td>
         <td>${element.prixachat}</td>
         <td> ${element.prixvente} </td>
         <td>${element.tva}</td>
@@ -94,8 +95,7 @@ function render(array) {
         <td> ${element.prixttc}</td>
         <td> ${element.degre} </td>
         <td><button class="modifybutton" onclick="update(${element.id})">Modifier</button></td>
-        <td><button class="deletebutton">Supprimer</button></td>
-        <td><button class="stockMoins">Stock -1</button></td></tr>`;
+        <td><button class="deletebutton">Supprimer</button></td>`;
 
     })
 
