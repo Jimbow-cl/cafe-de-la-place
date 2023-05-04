@@ -15,6 +15,7 @@ let tva = document.getElementById("tva");
 let produit = document.getElementById("produit");
 let table = document.querySelector("table");
 
+
 // Bouton Menu Gestion Stock avec Mot de Passe
 btnStock.addEventListener("click", function () {
     let passwd = document.querySelector("#passwd");
@@ -31,7 +32,7 @@ btnStock.addEventListener("click", function () {
             textdonne.style.display = "flex"
             table.style.display = "block";
         }
-        if (e.key === "Enter" && passwd.value == "1") {
+        if (e.key === "Enter" && passwd.value == "1111") {
             bienvenue.style.display = "none";
             stock.style.display = "flex";
             retour.style.display = "flex";
@@ -39,8 +40,7 @@ btnStock.addEventListener("click", function () {
             passwd.style.display = "none";
             form.style.display = "none"
             textdonne.style.display = "none"
-            modifybutton.disabled = "true";
-            deletebutton.disabled = "true";
+            table.style.display = "block";
         }
     });
 });
@@ -49,6 +49,7 @@ btnRetour.addEventListener("click", function () {
     bienvenue.style.display = "flex";
     stock.style.display = "none";
     retour.style.display = "none";
+    table.style.display = "none";
 });
 
 
