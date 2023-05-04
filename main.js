@@ -16,7 +16,7 @@ let produit = document.getElementById("produit");
 let table = document.querySelector("table");
 
 
-// Bouton Menu Gestion Stock avec Mot de Passe
+// Bouton Menu Gestion Stock avec Mot de Passe (Mot de passe 0000 pour le Gestionnaire, mot de passe 1111 pour le serveur)
 btnStock.addEventListener("click", function () {
     let passwd = document.querySelector("#passwd");
     let textdonne = document.querySelector(".textdonne");
