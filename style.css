@@ -93,15 +93,15 @@ select {
   border-radius: 40px;
   border-style: double;
   padding-top: 20px;
-  justify-content: flex-start;
   font-size: 33px;
   text-align: center;
   align-items: center;
   width: 65%;
   color: blanchedalmond;
   margin-bottom: 30px;
-  height: 64vh;
+  height: 53vh;
   margin-left: 307px;
+  background-color: rgba(0, 0, 0, 0.697);
 }
 
 h2 {
@@ -126,7 +126,6 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #00000099;
 }
 
 .consultation {
@@ -251,8 +250,6 @@ h2 {
 }
 
 form {
-  padding-bottom: 35px;
-  border-bottom: 2px solid blanchedalmond;
   width: 96%;
   gap: 35px;
   display: flex;
@@ -263,7 +260,7 @@ form {
   align-items: center;
 }
 
-.retour {
+retour {
   width: 80px;
   height: 80px;
   background-image: url(./retour.png);
@@ -273,11 +270,33 @@ form {
   border-radius: 50px;
 }
 
-.low { 
-  color:red;
+.low {
+  color: red;
 
 }
 
 .high {
-   color:#00f345;
-} 
+  color: #00f345;
+}
+
+.page2 {
+  margin-top: 45%;
+  color: blanchedalmond;
+}
+
+.table {
+  margin-left: -11%;
+  display: none;
+}
+
+.espace {
+  margin: 0%;
+}
+
+.info {
+  font-size: initial;
+}
+
+.headed {
+  font-size: xx-large;
+}
