@@ -178,11 +178,11 @@ function Information(
   this.id = id;
   this.nom = nom;
   this.quantite = quantite;
-  this.prixachat = prixachat + "€";
-  this.prixvente = prixvente + "€";
+  this.prixachat = prixachat;
+  this.prixvente = prixvente;
   this.tva = tva + "%";
-  this.margeht = prixvente - prixachat + "€";
-  this.prixttc = prixvente * (1 + tva / 100) + "€";
+  this.margeht = prixvente - prixachat;
+  this.prixttc = prixvente * (1 + tva / 100);
   this.produit = produit;
   this.degre = degre;
 }

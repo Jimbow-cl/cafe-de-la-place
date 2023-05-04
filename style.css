@@ -208,3 +208,10 @@ form {
 .espace {
   margin: 0%;
 }
+.info {
+  font-size: initial;
+}
+
+.headed {
+  font-size: xx-large;
+}
