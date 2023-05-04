@@ -96,7 +96,7 @@ function render(array) {
         tr = tr + `<tr><td>${element.id}</td>
         <td> ${element.produit} </td>
         <td> ${element.nom} </td>
-        <td> <input onchange= "color()" type="number" value="${element.quantite}"/> </td>
+        <td> <input onchange= "color()" id="quantite" type="number" value="${element.quantite}"/> </td>
         <td>${element.prixachat} €</td>
         <td> ${element.prixvente} €</td>
         <td> ${element.tva} %</td>
