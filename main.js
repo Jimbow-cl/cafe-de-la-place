@@ -54,7 +54,7 @@ btnRetour.addEventListener("click", function () {
 
 
 let listing;
-// Local Storage
+// Local Storage Onload
 addEventListener("DOMContentLoaded", () => {
     let cafe = JSON.parse(localStorage.getItem("cafe"));
 
@@ -69,7 +69,7 @@ addEventListener("DOMContentLoaded", () => {
 
 
 });
-
+// Local Storage Before Unload
 window.onbeforeunload = function () {
     if (localStorage != "") {
         localStorage.clear();
@@ -116,7 +116,7 @@ function render(array) {
 
     info.innerHTML = tr;
 
-    //bouton suprime liste
+    // Bouton suprimer liste
     let btnsupp = document.querySelectorAll(".deletebutton");
     btnsupp.forEach((element, index) => {
         element.addEventListener("click", () => {
@@ -145,6 +145,7 @@ form.addEventListener("submit", function (e) {
         data.get("degre")
     );
     let information;
+    // Verification de l'Input Hidden
     if (data.get("currentIdToUpdate") == "") {
         information = new Information(
             Date.now(),
@@ -160,6 +161,7 @@ form.addEventListener("submit", function (e) {
         );
         listing.push(information);
     } else {
+        //Input Hidden alimenté par l'id
         let currentIdToUpdate = data.get("currentIdToUpdate");
         information = listing.find(function (element) {
             return element.id == currentIdToUpdate;
@@ -205,7 +207,7 @@ function Information(
 
 }
 
-// Affichage de l'input degré
+// Affichage de l'input degré lors de la selection BA
 function degres() {
     let degre = document.querySelector("#degre");
     if (produit.value === "BA") {
