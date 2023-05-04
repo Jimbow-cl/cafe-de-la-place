@@ -37,11 +37,11 @@
       <p class="textdonne"> Veuillez saisir les nouvelles données</p>
       <div class="gestion">
         <form class="form">
-          <select id="produit" name="produit">
-            <option value="none">--Selectionnez votre type--</option>
-            <option value="Boisson alcoolisée">Boisson alcoolisée</option>
-            <option value="Boisson non alcoolisée">Boisson non alcoolisée</option>
-            <option value="Autrer">Autre</option>
+          <select id="produit" onchange="degres()" name="produit">
+            <option value="none" selected>--Selectionnez votre type--</option>
+            <option value="BA">Boisson alcoolisée</option>
+            <option value="BNA">Boisson non alcoolisée</option>
+            <option value="Autre">Autre</option>
           </select>
           <input type="hidden" id="currentIdToUpdate" name="currentIdToUpdate" value="" />
           <input type="text" id="nom" name="nom" placeholder="Nom du Produit" />
@@ -49,10 +49,11 @@
           <input type="text" id="prixachat" name="prixachat" placeholder="Prix d'Achat HT" />
           <input type="text" id="prixvente" name="prixvente" placeholder="Prix de Vente HT" />
           <select id="tva" name="tva">
-            <option value="20">20%</option>
+            <option value="20" selected>20%</option>
           </select>
-          <input type="text" id="degre" name="degre" placeholder="Degré" />
-
+          <div id="degre">
+            <input id="degre1" type="text" name="degre" placeholder="Degré" />
+          </div>
           <button type="submit" id="submit"></button>
         </form>
       </div>
@@ -81,6 +82,7 @@
 
     <script type="text/javascript" src="./main.js"></script>
   </div>
+  <footer></footer>
 </body>
 
 </html>

@@ -17,7 +17,7 @@ let produit = document.getElementById("produit");
 // Bouton Menu Gestion Stock avec Mot de Passe
 btnStock.addEventListener("click", function () {
     let passwd = document.querySelector("#passwd");
-    let textdonne = document.querySelector(".textonne");
+    let textdonne = document.querySelector(".textdonne");
     passwd.style.display = "block";
     passwd.addEventListener("keypress", function (e) {
         if (e.key === "Enter" && passwd.value == "0000") {
@@ -26,6 +26,8 @@ btnStock.addEventListener("click", function () {
             retour.style.display = "flex";
             passwd.value = "";
             passwd.style.display = "none";
+            form.style.display = "flex";
+            textdonne.style.display = "flex"
         }
         if (e.key === "Enter" && passwd.value == "1111") {
             bienvenue.style.display = "none";
@@ -49,7 +51,7 @@ btnRetour.addEventListener("click", function () {
 
 
 let listing;
-
+// Local Storage
 addEventListener("DOMContentLoaded", () => {
     // recuperation du local storage
     let cafe = JSON.parse(localStorage.getItem("cafe"));
@@ -68,7 +70,7 @@ addEventListener("DOMContentLoaded", () => {
 
 
 
-
+// Fonction de Modification du contenu de la liste
 function update(currentIdToUpdate) {
     let information = listing.find(function (element) {
         return element.id == currentIdToUpdate;
@@ -83,7 +85,7 @@ function update(currentIdToUpdate) {
     form.elements["tva"].value = information.tva;
     form.elements["degre"].value = information.degre;
 };
-
+// Fonction Affichage
 function render(array) {
     let tr = "";
 
@@ -92,15 +94,14 @@ function render(array) {
         <td> ${element.produit} </td>
         <td> ${element.nom} </td>
         <td> ${element.quantite}</td>
-        <td>${element.prixachat}</td>
-        <td> ${element.prixvente} </td>
-        <td>${element.tva}</td>
-        <td> ${element.margeht} </td>
-        <td> ${element.prixttc}</td>
-        <td> ${element.degre} </td>
-        <td><button class="modifybutton" onclick="update(${element.id})">Modifier</button></td>
-        <td><button class="deletebutton">Supprimer</button></td>
-        <td><button class="stockMoins">Stock -1</button></td></tr>`;
+        <td>${element.prixachat} €</td>
+        <td> ${element.prixvente} €</td>
+        <td> ${element.tva} %</td>
+        <td> ${element.margeht} € </td>
+        <td> ${element.prixttc} €</td>
+        <td> ${element.degre} °</td>
+        <td><button class="modifybutton button2" onclick="update(${element.id})">Modifier</button></td>
+        <td><button class="deletebutton button2">Supprimer</button></td>`;
         localStorage.setItem("cafe", JSON.stringify(listing));
 
     })
@@ -161,8 +162,8 @@ form.addEventListener("submit", function (e) {
         information.prixachat = data.get("prixachat");
         information.prixvente = data.get("prixvente");
         information.tva = data.get("tva");
-        information.margeht = data.get("margeht");
-        information.prixttc = data.get("prixttc");
+        information.margeht = information.prixvente - information.prixachat;
+        information.prixttc = information.prixvente * (1 + information.tva / 100);
         information.produit = data.get("produit");
         information.degre = data.get("degre");
     }
@@ -171,7 +172,6 @@ form.addEventListener("submit", function (e) {
 });
 
 // Function constructeur
-
 function Information(
     id,
     nom,
@@ -187,12 +187,23 @@ function Information(
     this.id = id;
     this.nom = nom;
     this.quantite = quantite;
-    this.prixachat = prixachat + "€";
-    this.prixvente = prixvente + "€";
-    this.tva = tva + "%";
-    this.margeht = prixvente - prixachat + "€";
-    this.prixttc = prixvente * (1 + tva / 100) + "€";
+    this.prixachat = prixachat;
+    this.prixvente = prixvente;
+    this.tva = tva;
+    this.margeht = prixvente - prixachat;
+    this.prixttc = prixvente * (1 + tva / 100);
     this.produit = produit;
     this.degre = degre;
 
+}
+
+// Affichage de l'input degré
+function degres() {
+    let degre = document.querySelector("#degre");
+    if (produit.value === "BA") {
+        degre.style.display = "block";
+    };
+    if (produit.value != "BA") {
+        degre.style.display = "none";
+    };
 }
