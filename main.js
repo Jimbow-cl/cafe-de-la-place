@@ -13,11 +13,13 @@ let margeht = document.getElementById("margeht");
 let prixttc = document.getElementById("prixttc");
 let tva = document.getElementById("tva");
 let produit = document.getElementById("produit");
+let table = document.querySelector("table");
+
 
 // Bouton Menu Gestion Stock avec Mot de Passe
 btnStock.addEventListener("click", function () {
     let passwd = document.querySelector("#passwd");
-    let textdonne = document.querySelector(".textonne");
+    let textdonne = document.querySelector(".textdonne");
     passwd.style.display = "block";
     passwd.addEventListener("keypress", function (e) {
         if (e.key === "Enter" && passwd.value == "0000") {
@@ -26,6 +28,9 @@ btnStock.addEventListener("click", function () {
             retour.style.display = "flex";
             passwd.value = "";
             passwd.style.display = "none";
+            form.style.display = "flex";
+            textdonne.style.display = "flex"
+            table.style.display = "block";
         }
         if (e.key === "Enter" && passwd.value == "1111") {
             bienvenue.style.display = "none";
@@ -35,8 +40,7 @@ btnStock.addEventListener("click", function () {
             passwd.style.display = "none";
             form.style.display = "none"
             textdonne.style.display = "none"
-            modifybutton.disabled = "true";
-            deletebutton.disabled = "true";
+            table.style.display = "block";
         }
     });
 });
@@ -45,12 +49,13 @@ btnRetour.addEventListener("click", function () {
     bienvenue.style.display = "flex";
     stock.style.display = "none";
     retour.style.display = "none";
+    table.style.display = "none";
 });
 
 
 let listing;
+// Local Storage
 addEventListener("DOMContentLoaded", () => {
-    // recuperation du local storage
     let cafe = JSON.parse(localStorage.getItem("cafe"));
 
     if (cafe == null) {
@@ -58,12 +63,23 @@ addEventListener("DOMContentLoaded", () => {
 
     } else {
         listing = cafe;
+        localStorage.clear();
         render(listing);
     }
 
 
 });
 
+window.onbeforeunload = function () {
+    if (localStorage != "") {
+        localStorage.clear();
+        localStorage.setItem("cafe", JSON.stringify(listing))
+    }
+
+};
+
+
+// Fonction de Modification du contenu de la liste
 function update(currentIdToUpdate) {
     let information = listing.find(function (element) {
         return element.id == currentIdToUpdate;
@@ -78,24 +94,23 @@ function update(currentIdToUpdate) {
     form.elements["tva"].value = information.tva;
     form.elements["degre"].value = information.degre;
 };
-
+// Fonction Affichage
 function render(array) {
     let tr = "";
 
     array.forEach((element, index) => {
+
         tr = tr + `<tr><td>${element.id}</td>
         <td> ${element.produit} </td>
         <td> ${element.nom} </td>
-        <td> ${element.quantite}</td>
-        <td>${element.prixachat}</td>
-        <td> ${element.prixvente} </td>
-        <td>${element.tva}</td>
-        <td> ${element.margeht} </td>
-        <td> ${element.prixttc}</td>
-        <td> ${element.degre} </td>
-        <td><button class="modifybutton" onclick="update(${element.id})">Modifier</button></td>
-        <td><button class="deletebutton">Supprimer</button></td>
-        <td><button class="stockMoins">Stock -1</button></td></tr>`;
+        <td> <input  type="number" id="quantite" name="quantite" class="${element.quantite < 5 ? "low" : "high"}"  value ="${element.quantite}"/></td>        <td>${element.prixachat} €</td>
+        <td> ${element.prixvente} €</td>
+        <td> ${element.tva} %</td>
+        <td> ${element.margeht} € </td>
+        <td> ${element.prixttc} €</td>
+        <td> ${element.degre} °</td>
+        <td><button class="modifybutton button2" onclick="update(${element.id})">Modifier</button></td>
+        <td><button class="deletebutton button2">Supprimer</button></td>`;
 
     })
 
@@ -107,7 +122,6 @@ function render(array) {
         element.addEventListener("click", () => {
             listing.splice(index, 1);
             console.log(listing);
-            localStorage.setItem("cafe", JSON.stringify(listing));
             render(listing);
         });
     });
@@ -155,18 +169,17 @@ form.addEventListener("submit", function (e) {
         information.prixachat = data.get("prixachat");
         information.prixvente = data.get("prixvente");
         information.tva = data.get("tva");
-        information.margeht = data.get("margeht");
-        information.prixttc = data.get("prixttc");
+        information.margeht = information.prixvente - information.prixachat;
+        information.prixttc = information.prixvente * (1 + information.tva / 100);
         information.produit = data.get("produit");
         information.degre = data.get("degre");
     }
     form.reset();
-    localStorage.setItem("listing", JSON.stringify(listing));
     render(listing);
+
 });
 
 // Function constructeur
-
 function Information(
     id,
     nom,
@@ -182,12 +195,25 @@ function Information(
     this.id = id;
     this.nom = nom;
     this.quantite = quantite;
-    this.prixachat = prixachat + "€";
-    this.prixvente = prixvente + "€";
-    this.tva = tva + "%";
-    this.margeht = prixvente - prixachat + "€";
-    this.prixttc = prixvente * (1 + tva / 100) + "€";
+    this.prixachat = prixachat;
+    this.prixvente = prixvente;
+    this.tva = tva;
+    this.margeht = prixvente - prixachat;
+    this.prixttc = prixvente * (1 + tva / 100);
     this.produit = produit;
     this.degre = degre;
 
 }
+
+// Affichage de l'input degré
+function degres() {
+    let degre = document.querySelector("#degre");
+    if (produit.value === "BA") {
+        degre.style.display = "block";
+    };
+    if (produit.value != "BA") {
+        degre.style.display = "none";
+    };
+}
+
+
