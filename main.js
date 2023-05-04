@@ -20,7 +20,7 @@ btnStock.addEventListener("click", function () {
     let textdonne = document.querySelector(".textdonne");
     passwd.style.display = "block";
     passwd.addEventListener("keypress", function (e) {
-        if (e.key === "Enter" && passwd.value == "0000") {
+        if (e.key === "Enter" && passwd.value == "1") {
             bienvenue.style.display = "none";
             stock.style.display = "flex";
             retour.style.display = "flex";
@@ -29,7 +29,7 @@ btnStock.addEventListener("click", function () {
             form.style.display = "flex";
             textdonne.style.display = "flex"
         }
-        if (e.key === "Enter" && passwd.value == "1111") {
+        if (e.key === "Enter" && passwd.value == "1") {
             bienvenue.style.display = "none";
             stock.style.display = "flex";
             retour.style.display = "flex";
@@ -90,10 +90,11 @@ function render(array) {
     let tr = "";
 
     array.forEach((element, index) => {
+
         tr = tr + `<tr><td>${element.id}</td>
         <td> ${element.produit} </td>
         <td> ${element.nom} </td>
-        <td> ${element.quantite}</td>
+        <td> <input onchange= "color()" type="number" value="${element.quantite}"/> </td>
         <td>${element.prixachat} €</td>
         <td> ${element.prixvente} €</td>
         <td> ${element.tva} %</td>
@@ -169,6 +170,7 @@ form.addEventListener("submit", function (e) {
     }
     form.reset();
     render(listing);
+
 });
 
 // Function constructeur
@@ -206,4 +208,18 @@ function degres() {
     if (produit.value != "BA") {
         degre.style.display = "none";
     };
+}
+// Fonction Color Quantité
+function color() {
+    if (quantite.value <= 5) {
+        quantite.className = "high";
+
+
+    }
+    if (quantite.value > 5) {
+        quantite.className = "low";
+
+    }
+
+
 }

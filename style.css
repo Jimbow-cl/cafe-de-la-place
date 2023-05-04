@@ -262,3 +262,22 @@ form {
   justify-content: center;
   align-items: center;
 }
+
+.retour {
+  width: 80px;
+  height: 80px;
+  background-image: url(./retour.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+}
+
+.low { 
+  color:red;
+
+}
+
+.high {
+   color:#00f345;
+} 
